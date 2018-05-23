@@ -150,4 +150,4 @@ class Recognition(vc.Voice):
         self.sayPhoto() #avisar que vai tirar uma foto
         self.takeShot() #salva foto no banco de dados
         self.sayFinish() #fim da rotina
-        return()
+        return
