@@ -3,9 +3,10 @@
 import face_recognition
 from datetime import datetime
 import cv2
+import voice as vc
 
 
-class Recognition():
+class Recognition(vc.Voice):
 
     def chamadaMoodle(self, nome):
         print('Fazendo a chamada no moodle: ' + str(nome))
@@ -13,9 +14,10 @@ class Recognition():
 
     def getFromCam(self):
         # Get a reference to webcam #0 (the default one)
-        video_capture = cv2.VideoCapture(0)
 
-        gabs_image = face_recognition.load_image_file("/home/gabs/reconhecimento facial/photos/gabs.jpg")
+        video_capture = cv2.VideoCapture(1)
+
+        gabs_image = face_recognition.load_image_file("/home/gabs/reconhecimento facial/photos/obama.jpg")
         gabs_face_encoding = face_recognition.face_encodings(gabs_image)[0]
 
         # gabs_image = face_recognition.load_image_file("gabs.jpg")
@@ -119,3 +121,33 @@ class Recognition():
             process_this_frame = not process_this_frame
 
         return name
+
+    def takeShot(self):
+        cap = cv2.VideoCapture(1)
+
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+
+        # Our operations on the frame come here
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Display the resulting frame
+        cv2.imshow('frame',gray)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            return
+
+        input('Press Enter to take a shot')
+        return_value, image = cap.read()
+        cv2.imwrite('/home/gabs/reconhecimento facial/photos/photo.png', image)
+
+        # When everything done, release the capture
+        cap.release()
+        cv2.destroyAllWindows()
+
+    def RegisterNewPerson(self):
+        self.sayWellcome()
+        self.startRecord() #get name
+        self.sayPhoto() #avisar que vai tirar uma foto
+        self.takeShot() #salva foto no banco de dados
+        self.sayFinish() #fim da rotina
+        return()
