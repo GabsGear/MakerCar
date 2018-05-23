@@ -13,7 +13,7 @@ class Recognition():
 
     def getFromCam(self):
         # Get a reference to webcam #0 (the default one)
-        video_capture = cv2.VideoCapture(1)
+        video_capture = cv2.VideoCapture(0)
 
         gabs_image = face_recognition.load_image_file("/home/gabs/reconhecimento facial/photos/gabs.jpg")
         gabs_face_encoding = face_recognition.face_encodings(gabs_image)[0]
@@ -38,9 +38,9 @@ class Recognition():
         process = 0
         confirm = 0
         horario = 'unkdown'
-        while True:#process <= 5:
+        while process <= 5:
             # Grab a single frame of video
-            ret, frame = video_capture.read()
+            ret, frame = video_capture.read(0)
 
             # Resize frame of video to 1/4 size for faster face recognition processing
             small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
@@ -118,3 +118,4 @@ class Recognition():
             
             process_this_frame = not process_this_frame
 
+        return name
