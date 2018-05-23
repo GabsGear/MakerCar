@@ -5,7 +5,6 @@ import pyaudio
 import wave
 import speech_recognition as sr
 
-
 class Voice():
 
 	def sayHello(self, name):
@@ -27,9 +26,26 @@ class Voice():
 		string = ('Hi stranger, I do not know you. Welcome to Maker Space, what is your name?')
 		engine.say(string)
 		engine.runAndWait()
+	
+	def sayPhoto(self):
+		engine = pyttsx3.init()
+		rate = engine.getProperty('rate')
+		engine.setProperty('voice', b'brazil')	
+		engine.setProperty('rate',rate-30)
+		engine.setProperty('volume',1.0) 	
+		string = ('I need a picture of you, make sure you are wearing a good fragrance.')
+		engine.say(string)
+		engine.runAndWait()
 
-
-class Record():
+	def sayFinish(self):
+		engine = pyttsx3.init()
+		rate = engine.getProperty('rate')
+		engine.setProperty('voice', b'brazil')	
+		engine.setProperty('rate',rate-30)
+		engine.setProperty('volume',1.0) 	
+		string = ('We already met, the next time we meet, I will remember you..')
+		engine.say(string)
+		engine.runAndWait()
 
 	def startRecord(self):
 		CHUNK = 1024
@@ -67,3 +83,4 @@ class Record():
 		wf.setframerate(RATE)
 		wf.writeframes(b''.join(frames))
 		wf.close()
+
