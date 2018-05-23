@@ -15,4 +15,8 @@ Requisitos:
     pip3 install opencv-python
   -face_recognition
     pip3 install face_recognition
+    
 ```
+
+Licence GNU, leia mais sobre software livre 
+https://www.gnu.org/licenses/licenses.pt-br.html
