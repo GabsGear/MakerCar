@@ -5,14 +5,10 @@ def main():
 
     test = recognition.Recognition()
     vc = voice.Voice()
-    mic = voice.Record()
-    # name = test.getFromCam()
-    # if (name != 'Unknown'):
-    #     vc.sayHello(str(name))
+    name = test.getFromCam()
+    if (name != 'Unknown'):
+        vc.sayHello(str(name))
 
-    # else:
-    #     vc.sayWellcome()
-
-    #mic.startRecord()
-    mic.Recognition()
+    else:
+          test.RegisterNewPerson()
 main()
