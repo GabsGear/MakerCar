@@ -8,7 +8,11 @@ Projeto open source MakerSpace Araranguá
 ```
 
 
+```
 Requisitos:
-  -Python3
-  -OpenCV (cv2)
-  
+  -Python3 
+  -OpenCV (cv2) 
+    pip3 install opencv-python
+  -face_recognition
+    pip3 install face_recognition
+```
