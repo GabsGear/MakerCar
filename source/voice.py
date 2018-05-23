@@ -1,13 +1,24 @@
 import sys
 import pyttsx3
 
-def say(s):
-	engine = pyttsx3.init()
-	rate = engine.getProperty('rate')
-	engine.setProperty('voice', b'brazil')	
-	engine.setProperty('rate',rate-30)
-	engine.setProperty('volume',1.0) 	
-	engine.say(s)	
-	a=engine.runAndWait()
+class Voice():
 
-say('Olá luan, tudo bem com você?')
+	def sayHello(self, name):
+		engine = pyttsx3.init()
+		rate = engine.getProperty('rate')
+		engine.setProperty('voice', b'brazil')	
+		engine.setProperty('rate',rate-30)
+		engine.setProperty('volume',1.0) 	
+		string = ('Hello ' + str(name) + ', you ok?')
+		engine.say(string)
+		engine.runAndWait()
+
+	def sayWellcome(self):
+		engine = pyttsx3.init()
+		rate = engine.getProperty('rate')
+		engine.setProperty('voice', b'brazil')	
+		engine.setProperty('rate',rate-30)
+		engine.setProperty('volume',1.0) 	
+		string = ('Hi stranger, I do not know you. Welcome to Maker Space, what is your name?')
+		engine.say(string)
+		engine.runAndWait()
